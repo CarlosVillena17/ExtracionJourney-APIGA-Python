@@ -5,16 +5,10 @@ from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 from datetime import datetime
 import pandas as pd
-#BD_USERID = pd.read_excel('BASE OCTUBRE 22.xlsx')
-#mes_num=1
+
 UserID_Enero=pd.read_excel("JUNIO.xlsx")
 UserIDtengo=pd.read_excel("Journeys (2).xlsx", sheet_name="Enero")
-LISTA_TODOS_USERID=UserID_Enero["userID"].unique().tolist()
-LISTA_LOSQUETENGO_USERID=UserIDtengo["userID"].unique().tolist()
-lista_ID = [elemento for elemento in LISTA_TODOS_USERID if elemento not in LISTA_LOSQUETENGO_USERID]
-lista_ID=lista_ID[700+505:]
-#lista_ID = BD_USERID['userID'].unique().tolist()
-#lista_ID=lista_ID[1030+526:]
+lista_ID=UserID_Enero["userID"].unique().tolist()
 
 creds = Credentials.from_service_account_file('api-python-380220-366fd91b39ae.json')
 
@@ -71,7 +65,7 @@ for userID in lista_ID:
         print("============================")
     else:
         print(userID)
-        print("VACIOOOOOOOOOOOOO")
+
 
     print(i)
     i=i+1
